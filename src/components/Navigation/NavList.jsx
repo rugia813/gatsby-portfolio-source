@@ -2,7 +2,7 @@ import React from "react";
 import FontIcon from "react-md/lib/FontIcons";
 import Link from "gatsby-link";
 
-function GetNavList(config) {
+function GetNavList(config, lang) {
   const NavList = [
     {
       primaryText: "Home",
@@ -14,13 +14,13 @@ function GetNavList(config) {
       primaryText: "About Me",
       leftIcon: <FontIcon>person</FontIcon>,
       component: Link,
-      to: "/about/"
+      to: `/${lang}/about/`
     },
     {
       primaryText: "Works",
       leftIcon: <FontIcon>mail</FontIcon>,
       component: Link,
-      to: "/works/"
+      to: `/${lang}/works/`
     },
     {
       divider: true
@@ -37,15 +37,6 @@ function GetNavList(config) {
       });
     });
   }
-
-  NavList.push({ divider: true });
-
-  NavList.push({
-    primaryText: "About",
-    leftIcon: <FontIcon>person</FontIcon>,
-    component: Link,
-    to: "/about/"
-  });
   return NavList;
 }
 export default GetNavList;

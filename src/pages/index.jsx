@@ -1,6 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
-import About from "../components/About/About";
+import Main from "../components/Main/Main";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 
@@ -12,7 +12,7 @@ class Index extends React.Component {
           <title>{config.siteTitle}</title>
           <link rel="canonical" href={`${config.siteUrl}`} />
         </Helmet>
-        <About />
+        <Main />
       </div>
     );
   }

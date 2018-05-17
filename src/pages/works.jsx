@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Helmet from "react-helmet";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
@@ -6,7 +6,6 @@ import config from "../../data/SiteConfig";
 
 class Works extends React.Component {
   render() {
-    console.log(this)
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <div className="index-container">

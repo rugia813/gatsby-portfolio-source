@@ -1,10 +1,10 @@
 @import '~react-md/src/scss/react-md';
 $md-primary-color: $md-blue-grey-600;
 $md-secondary-color: $md-green-700;
-$md-tertiary-color: $md-brown-500;
+$md-tertiary-color: $md-grey-900;
 
-body,
 .main-container,
+.main-content,
 .darker-background {
     background-color: $md-tertiary-color;
 }

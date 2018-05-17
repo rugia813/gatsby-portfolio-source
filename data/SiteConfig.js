@@ -1,3 +1,5 @@
+const jay = require('./jay')
+
 module.exports = {
   blogPostDir: "sample-posts", // The name of directory that contains your posts.
   siteTitle: "Jay Li's Portfolio", // Site title.
@@ -12,7 +14,7 @@ module.exports = {
   siteGATrackingID: "UA-47311644-4", // Tracking code ID for google analytics.
   disqusShortname: "https-vagr9k-github-io-gatsby-material-starter", // Disqus shortname.
   postDefaultCategoryID: "Tech", // Default category for posts.
-  userName: "Material User", // Username to display in the author segment.
+  userName: "Jay Li", // Username to display in the author segment.
   userTwitter: "", // Optionally renders "Follow Me" in the UserInfo segment.
   userLocation: "kaohsiung, Taiwan", // User location to display in the author segment.
   userAvatar: "https://api.adorable.io/avatars/150/test.png", // User avatar to display in the author segment.
@@ -36,5 +38,6 @@ module.exports = {
       iconClassName: "fa fa-envelope"
     }
   ],
+  jay,
   copyright: "Copyright © 2017. Material User" // Copyright string for the footer of the website and RSS feed.
 };

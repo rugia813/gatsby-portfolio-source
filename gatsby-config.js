@@ -7,6 +7,7 @@ const regexExcludeRobots = /^(?!\/(dev-404-page|404|offline-plugin-app-shell-fal
 module.exports = {
   pathPrefix: config.pathPrefix,
   siteMetadata: {
+    ...config,
     siteUrl: config.siteUrl + pathPrefix,
     rssMetadata: {
       site_url: config.siteUrl + pathPrefix,
@@ -26,6 +27,14 @@ module.exports = {
       options: {
         name: "posts",
         path: `${__dirname}/content/${config.blogPostDir}`
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-i18n',
+      options: {        
+        langKeyDefault: 'en',
+        useLangKeyLayout: false,
+        langKeyForNull: 'en',
       }
     },
     {
