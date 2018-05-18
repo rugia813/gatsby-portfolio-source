@@ -1,24 +1,16 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
-import About from "../components/About/About";
+import AboutPage from "./about";
 import config from "../../data/SiteConfig";
 
-class AboutPage extends Component {
-  render() {
-    const data = this.props.data.site.siteMetadata.jay.cn;
-    return (
-      <div className="about-container">
-        <Helmet>
-          <title>{`About | ${config.siteTitle}`}</title>
-          <link rel="canonical" href={`${config.siteUrl}/about/`} />
-        </Helmet>
-        <About data={data} />
-      </div>
-    );
+class AboutPageEn extends AboutPage {
+  constructor(props) {
+    super(props)
+    this.lang = 'cn'
   }
 }
 
-export default AboutPage;
+export default AboutPageEn;
 
 /* eslint no-undef: "off"*/
 export const pageQuery = graphql`
