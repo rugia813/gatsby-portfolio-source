@@ -13,5 +13,6 @@ body {
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700|Material+Icons');
 @import '~react-md/src/scss/react-md';
 @import 'theme.scss';
+@import 'blueprint.scss';
 
 @include react-md-everything;

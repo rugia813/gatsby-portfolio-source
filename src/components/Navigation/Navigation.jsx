@@ -34,8 +34,6 @@ class Navigation extends Component {
     );
   }
   handleLangChange(lang) {
-    console.log(lang, lang === 'cn', lang === 'en')
-
     if (this.state.lang === 'en' && lang === 'cn') {
       navigateTo(window.location.pathname.replace('en', 'cn'))
     }
