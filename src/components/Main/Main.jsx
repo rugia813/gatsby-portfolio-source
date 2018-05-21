@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Card from "react-md/lib/Cards/Card";
 import CardText from "react-md/lib/Cards/CardText";
 import UserLinks from "../UserLinks/UserLinks";
+import FillButton from '../FillButton/FillButton'
 import config from "../../../data/SiteConfig";
 import "./Main.scss";
 
@@ -21,6 +22,7 @@ class Main extends Component {
             </CardText>
             <UserLinks labeled config={config} />
           </div>
+          <FillButton text="Enter" />
         </Card>
       </div>
     );
