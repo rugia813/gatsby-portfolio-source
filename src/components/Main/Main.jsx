@@ -9,7 +9,7 @@ import "./Main.scss";
 class Main extends Component {
   render() {
     return (
-      <div className="main-container md-grid mobile-fix">
+      <div className="index-container md-grid mobile-fix">
         <Card className="md-grid md-cell--8">
           <div className="main-wrapper">
             <img

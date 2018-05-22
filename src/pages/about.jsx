@@ -10,8 +10,9 @@ class AboutPage extends Component {
   }
   render() {
     const data = this.props.data.site.siteMetadata.jay[this.lang];
+    const transition = this.props.transition
     return (
-      <div className="about-container">
+      <div className="about-container" style={transition && transition.style}>
         <Helmet>
           <title>{`About | ${config.siteTitle}`}</title>
           <link rel="canonical" href={`${config.siteUrl}/about/`} />

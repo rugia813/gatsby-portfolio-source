@@ -33,7 +33,7 @@ class About extends Component {
       </div>
     ))
     return (
-      <div className="about-container md-grid mobile-fix">
+      <div className="index-container md-grid mobile-fix">
         <Card className="md-grid md-cell--8">
           <div className="about-wrapper">
             <CardTitle title="Jay Li" subtitle={titles.introduction} />
