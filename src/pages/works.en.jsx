@@ -1,9 +1,26 @@
-import WorksPage from './works'
+import React, { Component } from "react";
+import Helmet from "react-helmet";
+import PostListing from "../components/PostListing/PostListing";
+import SEO from "../components/SEO/SEO";
+import config from "../../data/SiteConfig";
 
-class WorksPageEn extends WorksPage {
+class WorksPageEn extends React.Component {
   constructor(props) {
     super(props)
     this.lang = 'en'
+  }
+  render() {
+    const postEdges = this.props.data.allMarkdownRemark.edges;
+    return (
+      <div className="index-container">
+        <Helmet>
+          <title>{config.siteTitle}</title>
+          <link rel="canonical" href={`${config.siteUrl}`} />
+        </Helmet>
+        <SEO postEdges={postEdges} />
+        <PostListing postEdges={postEdges} />
+      </div>
+    );
   }
 }
 

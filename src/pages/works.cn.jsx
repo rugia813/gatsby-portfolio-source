@@ -1,6 +1,6 @@
-import WorksPage from './works'
+import WorksPageEn from './works.en'
 
-class WorksPageCn extends WorksPage {
+class WorksPageCn extends WorksPageEn {
   constructor(props) {
     super(props)
     this.lang = 'cn'

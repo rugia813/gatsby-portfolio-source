@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
-import AboutPage from "./about";
+import AboutPage from "./about.en";
 import config from "../../data/SiteConfig";
 
-class AboutPageEn extends AboutPage {
+class AboutPageCn extends AboutPage {
   constructor(props) {
     super(props)
     this.lang = 'cn'
   }
 }
 
-export default AboutPageEn;
+export default AboutPageCn;
 
 /* eslint no-undef: "off"*/
 export const pageQuery = graphql`
