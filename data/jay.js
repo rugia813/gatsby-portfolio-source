@@ -3,6 +3,7 @@ module.exports = {
         titles: {
             introduction: 'Introduction',
             experiances: 'Experiance',
+            education: 'Education',
             skills: 'Skill',
         },
         experiances: [{
@@ -17,18 +18,24 @@ module.exports = {
                 title: 'Full-Stack Developer',
                 responsibility: 'Responsible for maintaining current projects, and develop new functionalities.',
             },
-            {
+        ],
+        education: [{
                 company: 'Institute of Infomation Industry',
                 period: '2016/03 ~ 2016/09',
                 title: 'Web/Mobile App Develop Training',
-                responsibility: 'Responsible for maintaining current projects, and develop new functionalities.',
             },
+            {
+                company: 'I-Shou University',
+                period: '2005/09 ~ 2009/06',
+                title: 'Applied English',
+            }
         ]
     },
     cn: {
         titles: {
             introduction: '履歷',
-            experiances: '學經歷',
+            experiances: '經歷',
+            education: '學歷',
             skills: '技能',
         },
         experiances: [{
@@ -43,12 +50,17 @@ module.exports = {
                 title: '全端工程師',
                 responsibility: '維護現有專案及開發新功能',
             },
-            {
+        ],
+        education: [{
                 company: '資策會',
                 period: '2016/03 ~ 2016/09',
                 title: '網頁行動App開發班',
-                responsibility: 'Responsible for maintaining current projects, and develop new functionalities.',
             },
+            {
+                company: '義守大學',
+                period: '2005/09 ~ 2009/06',
+                title: '應用英語系',
+            }
         ]
     }
 }

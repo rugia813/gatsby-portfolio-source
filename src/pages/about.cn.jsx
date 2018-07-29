@@ -20,8 +20,9 @@ export const pageQuery = graphql`
         jay {
           cn {
             titles {
-              introduction,
-              experiances,
+              introduction
+              experiances
+              education
               skills
             },
             experiances {
@@ -29,6 +30,11 @@ export const pageQuery = graphql`
               period
               title
               responsibility
+            },
+            education {
+              company
+              period
+              title
             }
           }
         }

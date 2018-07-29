@@ -18,6 +18,7 @@ class About extends Component {
     const data = this.props.data
     const titles = data.titles
     const experiances = data.experiances
+    const education = data.education
     
     const expList = experiances.map(exp => (
       <div key={exp.company}>
@@ -28,6 +29,14 @@ class About extends Component {
               {exp.responsibility}
             </p>
           </CardText>
+        </Card>
+        <br/>
+      </div>
+    ))
+    const educationList = education.map(exp => (
+      <div key={exp.company}>
+        <Card>
+          <CardTitle title={`${exp.company} (${exp.period})`} subtitle={exp.title}/>
         </Card>
         <br/>
       </div>
@@ -44,8 +53,10 @@ class About extends Component {
               </p>
               <hr/>
               <CardTitle title={titles.experiances} />
-
               {expList}
+
+              <CardTitle title={titles.education} />
+              {educationList}
 
               <br/>
               <hr/>
