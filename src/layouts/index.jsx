@@ -5,6 +5,7 @@ import Navigation from "../components/Navigation/Navigation";
 import config from "../../data/SiteConfig";
 import "./index.scss";
 import "./global.scss";
+import {init, animate} from "../components/Bg3d/Bg3d";
 
 export default class MainLayout extends React.Component {
   getLocalTitle() {
@@ -41,6 +42,10 @@ export default class MainLayout extends React.Component {
       title = `${capitalize(category)}`;
     }
     return title;
+  }
+  componentDidMount() {
+    init()
+    animate()
   }
   render() {
     const { children } = this.props;
