@@ -2,7 +2,7 @@ const jay = require('./jay')
 
 module.exports = {
   blogPostDir: "sample-posts", // The name of directory that contains your posts.
-  siteTitle: "Jay Li's Portfolio", // Site title.
+  siteTitle: "Jay Li", // Site title.
   siteTitleAlt: "Jay Li's Portfolio", // Alternative site title for SEO.
   siteLogo: "/logos/logo-1024.png", // Logo used for SEO and manifest.
   siteUrl: "https://vagr9k.github.io", // Domain of your website without pathPrefix.

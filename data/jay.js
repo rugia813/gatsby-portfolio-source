@@ -10,13 +10,13 @@ module.exports = {
                 company: 'Glory',
                 period: '2017/09 ~ present',
                 title: 'Front-End Developer',
-                responsibility: 'Responsible for maintaining current projects, and develop new functionalities.',
+                responsibility: 'Maintain or develop new functionalities for the frontend of lottery web app. The stack is vue.js and some jquery for older projects.',
             },
             {
                 company: 'Xct',
                 period: '2016/10 ~ 2017/09',
                 title: 'Full-Stack Developer',
-                responsibility: 'Responsible for maintaining current projects, and develop new functionalities.',
+                responsibility: 'I took parts in two projects, one is a simple web game, and the other is a platform that provides various reports based on data retrieved through other business partner\'s API.',
             },
         ],
         education: [{
