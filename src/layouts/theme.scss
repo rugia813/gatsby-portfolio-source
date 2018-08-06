@@ -1,5 +1,8 @@
 @import '~react-md/src/scss/react-md';
-$md-primary-color: $md-blue-900;
+
+$md-light-theme: false;
+$darkTransparent: rgba(0,0,0,0.3);
+$md-primary-color: $darkTransparent;
 $md-secondary-color: $md-green-700;
 $md-tertiary-color: $md-grey-900;
 
@@ -9,7 +12,17 @@ $md-tertiary-color: $md-grey-900;
     background-color: $md-tertiary-color;
 }
 
+.main-content {
+    margin-top: 0;
+    min-height: 100vh;
+    padding-top: 64px;
+}
+
 a:link {
     color: $md-secondary-color;
     text-decoration: none;
+}
+
+.md-card {
+    background-color: $darkTransparent;
 }

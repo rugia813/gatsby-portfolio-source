@@ -1,10 +1,11 @@
 $c: darken(#59d, 10%);
-$b: rgba(255,255,255,.2);
-$t: rgba(255,255,255,.1);
+$b: rgba(0,0,0,0.4);
+$t: rgba(0,0,0,0.0);
 $n: transparent;
 
 body {
-  background-image: linear-gradient(to bottom, $c 0%, darken($c, 15%) 100%);
+  // background-image: linear-gradient(to bottom, $c 0%, darken($c, 15%) 100%);
+  background-image: linear-gradient(170deg, #000000 10%, #091833 41%, #18191d 80%);
 }
 
 #main-content {
