@@ -12,7 +12,7 @@ class Index extends React.Component {
           <title>{config.siteTitle}</title>
           <link rel="canonical" href={`${config.siteUrl}`} />
         </Helmet>
-        <Main />
+        {/* <Main /> */}
       </div>
     );
   }
