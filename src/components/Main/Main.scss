@@ -1,8 +1,8 @@
 .main-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;
-
+    align-items: left;
+    z-index: 1;
     .main-img {
         border-radius: 50%;
         width: 300px;
@@ -21,5 +21,18 @@
         @media (max-width: 360px - 1px) {
             margin: 5px 0 !important;
         }
+    }
+}
+
+.intro {
+    display: block;
+    font-family: fantasy;
+    .intro-author {
+        font-size: 15vh;
+        color: white;
+    }
+    .intro-occupation {
+        font-size: 3vh;
+        color: #d7ac2f;
     }
 }

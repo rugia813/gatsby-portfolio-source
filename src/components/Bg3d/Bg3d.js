@@ -55,8 +55,8 @@ export function init() {
     camera.position.z = 50;
     camera.lookAt(new THREE.Vector3(10, 0, 0));
 
-    controls = new OrbitControls( camera );
-    controls.enableZoom  = true
+    // controls = new OrbitControls( camera );
+    // controls.enableZoom  = true
 
     scene = new THREE.Scene();
 
@@ -70,13 +70,14 @@ export function init() {
                 particleControl.redraw();
             })
             .start();
-    }, 500);
+    }, 1500);
     
     renderer = new THREE.WebGLRenderer( { antialias: false, alpha: true } );
     renderer.setSize( window.innerWidth, window.innerHeight );
 
     document.getElementById('___gatsby').appendChild( renderer.domElement );
     
+    window.addEventListener('resize', onWindowResize, false);
 }
     
 export function animate(time) {
@@ -92,6 +93,15 @@ export function animate(time) {
         knot.rotation.y = step += 0.005;
     }
 
+}
+
+function onWindowResize() {
+    const _width = window.innerWidth;
+    const _height = window.innerHeight;
+    renderer.setSize(_width, _height);
+    camera.aspect = _width / _height;
+    camera.updateProjectionMatrix();
+    console.log('- resize -');
 }
 
 function generateSprite() {

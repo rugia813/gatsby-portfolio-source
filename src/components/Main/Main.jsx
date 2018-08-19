@@ -10,20 +10,26 @@ class Main extends Component {
   render() {
     return (
       <div className="index-container md-grid mobile-fix">
-        <Card className="md-grid md-cell--8">
+        <div className="md-grid md-cell--8">
           <div className="main-wrapper">
-            <img
+            {/* <img
               src={config.userAvatar}
               className="main-img"
               alt={config.userName}
-            />
-            <CardText>
+            /> */}
+            
+            <div className="intro">
+              <div className="intro-author">Jay Li</div>
+              <div className="intro-occupation">Web Developer</div>
+            </div>
+            
+            {/* <CardText>
               <p className="main-text md-body-1">{config.userDescription}</p>
-            </CardText>
-            <UserLinks labeled config={config} />
+            </CardText> */}
+            {/* <UserLinks labeled config={config} /> */}
+            {/* <FillButton text="Enter" /> */}
           </div>
-          <FillButton text="Enter" />
-        </Card>
+        </div>
       </div>
     );
   }
