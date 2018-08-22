@@ -5,7 +5,9 @@ import { BloomPass, FilmPass, GlitchPass } from "postprocessing";
 import { FocusShader, DotScreenShader, RGBShiftShader, OrbitControls } from 'three-addons';
 import { Stats } from 'three-stats';
 import TWEEN from "@tweenjs/tween.js";
+import * as dat from 'dat.gui';
 
+const gui = new dat.GUI();
 
 let camera, scene, renderer, mesh, renderTarget;
 
@@ -22,14 +24,41 @@ let stats;
 // init();
 // animate();
 
+const defaultState = {
+    radius: 40,
+    tube: 9,
+    radialSegments: 200,
+    tubularSegments: 15,
+    p: 5,
+    q: 4,
+    heightScale: 4,
+}
+const particleStates = {
+    default: defaultState,
+    ballBig: {
+        radius: 1,
+        tube: 10.8,
+        radialSegments: 389,
+        tubularSegments: 20,
+        p: 5,
+        q: 8,
+        heightScale: 1.6,
+    },
+    ballSmall: {
+        ...defaultState,
+        radius: 1,
+        heightScale: 1,
+    }
+}
+
 const particleControl = new function () {
-    this.radius = 40;
-    this.tube = 9;
-    this.radialSegments = 200;
-    this.tubularSegments = 15;
-    this.p = 5;
-    this.q = 4;
-    this.heightScale = 4;
+    this.radius = defaultState.radius;
+    this.tube = defaultState.tube;
+    this.radialSegments = defaultState.radialSegments;
+    this.tubularSegments = defaultState.tubularSegments;
+    this.p = defaultState.p;
+    this.q = defaultState.q;
+    this.heightScale = defaultState.heightScale;
     this.rotate = true;
 
     this.redraw = function () {
@@ -44,7 +73,6 @@ const particleControl = new function () {
         scene.add(knot);
     };
 }
-console.log('particleControl: ', particleControl);
 
 export function init() {
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -53,7 +81,7 @@ export function init() {
     camera.position.x = -30;
     camera.position.y = 40;
     camera.position.z = 50;
-    camera.lookAt(new THREE.Vector3(10, 0, 0));
+    camera.lookAt(new THREE.Vector3(0, 0, 0));
 
     // controls = new OrbitControls( camera );
     // controls.enableZoom  = true
@@ -64,13 +92,28 @@ export function init() {
 
     setTimeout(() => {
         new TWEEN.Tween(particleControl)
-            .to({ radius: 1, heightScale: 1 }, 3000)
+            // .to(particleStates.ballSmall, 3000)
+            .to(particleStates.ballBig, 3000)
             .easing(TWEEN.Easing.Quadratic.Out)
             .onUpdate(function() {
                 particleControl.redraw();
             })
             .start();
     }, 1500);
+
+    gui.add(particleControl, 'radius', 0, 40).onChange(particleControl.redraw);
+    gui.add(particleControl, 'tube', 0, 40).onChange(particleControl.redraw);
+    gui.add(particleControl, 'radialSegments', 0, 600).step(1).onChange(particleControl.redraw);
+    gui.add(particleControl, 'tubularSegments', 1, 20).step(1).onChange(particleControl.redraw);
+    gui.add(particleControl, 'p', 1, 10).step(1).onChange(particleControl.redraw);
+    gui.add(particleControl, 'q', 1, 15).step(1).onChange(particleControl.redraw);
+    gui.add(particleControl, 'heightScale', 0, 5).onChange(particleControl.redraw);
+    gui.add(particleControl, 'rotate').onChange(particleControl.redraw);
+    gui.add(camera.position, 'x', -30, 100).onChange(particleControl.redraw);
+    gui.add(camera.position, 'y', -30, 100).onChange(particleControl.redraw);
+    gui.add(camera.position, 'z', -30, 100).onChange(particleControl.redraw);
+    
+    gui.close();
     
     renderer = new THREE.WebGLRenderer( { antialias: false, alpha: true } );
     renderer.setSize( window.innerWidth, window.innerHeight );

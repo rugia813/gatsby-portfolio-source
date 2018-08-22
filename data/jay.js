@@ -62,5 +62,8 @@ module.exports = {
                 title: '應用英語系',
             }
         ]
+    },
+    skills: {
+        
     }
 }
