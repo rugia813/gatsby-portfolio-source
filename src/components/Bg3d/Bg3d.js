@@ -7,8 +7,6 @@ import { Stats } from 'three-stats';
 import TWEEN from "@tweenjs/tween.js";
 import * as dat from 'dat.gui';
 
-const gui = new dat.GUI();
-
 let camera, scene, renderer, mesh, renderTarget;
 
 let parent, meshes = [], clonemeshes = [];
@@ -27,8 +25,8 @@ let stats;
 const defaultState = {
     radius: 40,
     tube: 9,
-    radialSegments: 200,
-    tubularSegments: 15,
+    radialSegments: 0,
+    tubularSegments: 0,
     p: 5,
     q: 4,
     heightScale: 4,
@@ -46,10 +44,30 @@ const particleStates = {
     },
     ballSmall: {
         ...defaultState,
+        radialSegments: 200,
         radius: 1,
         heightScale: 1,
     }
 }
+const cameraState = {
+    default: {
+        x: -70,
+        y: 5,
+        z: 0
+    },
+    mobile: {
+        x: -100,
+        y: 15,
+        z: 0
+    },
+    apply: function(preset) {
+        camera.position.x = preset.x
+        camera.position.y = preset.y
+        camera.position.z = preset.z
+    }
+}
+
+const gui = new dat.GUI();
 
 const particleControl = new function () {
     this.radius = defaultState.radius;
@@ -76,12 +94,9 @@ const particleControl = new function () {
 
 export function init() {
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    
-    // position and point the camera to the center of the scene
-    camera.position.x = -30;
-    camera.position.y = 40;
-    camera.position.z = 50;
+    cameraState.apply(cameraState.default)
     camera.lookAt(new THREE.Vector3(0, 0, 0));
+    adjustCamPos()
 
     // controls = new OrbitControls( camera );
     // controls.enableZoom  = true
@@ -101,29 +116,34 @@ export function init() {
             .start();
     }, 1500);
 
-    gui.add(particleControl, 'radius', 0, 40).onChange(particleControl.redraw);
-    gui.add(particleControl, 'tube', 0, 40).onChange(particleControl.redraw);
-    gui.add(particleControl, 'radialSegments', 0, 600).step(1).onChange(particleControl.redraw);
-    gui.add(particleControl, 'tubularSegments', 1, 20).step(1).onChange(particleControl.redraw);
-    gui.add(particleControl, 'p', 1, 10).step(1).onChange(particleControl.redraw);
-    gui.add(particleControl, 'q', 1, 15).step(1).onChange(particleControl.redraw);
-    gui.add(particleControl, 'heightScale', 0, 5).onChange(particleControl.redraw);
-    gui.add(particleControl, 'rotate').onChange(particleControl.redraw);
-    gui.add(camera.position, 'x', -30, 100).onChange(particleControl.redraw);
-    gui.add(camera.position, 'y', -30, 100).onChange(particleControl.redraw);
-    gui.add(camera.position, 'z', -30, 100).onChange(particleControl.redraw);
-    
+    // DAT GUI
+    gui.add(particleControl, 'radius', 0, 40).onChange(particleControl.redraw).listen();
+    gui.add(particleControl, 'tube', 0, 40).onChange(particleControl.redraw).listen();
+    gui.add(particleControl, 'radialSegments', 0, 600).step(1).onChange(particleControl.redraw).listen();
+    gui.add(particleControl, 'tubularSegments', 1, 20).step(1).onChange(particleControl.redraw).listen();
+    gui.add(particleControl, 'p', 1, 10).step(1).onChange(particleControl.redraw).listen();
+    gui.add(particleControl, 'q', 1, 15).step(1).onChange(particleControl.redraw).listen();
+    gui.add(particleControl, 'heightScale', 0, 5).onChange(particleControl.redraw).listen();
+    gui.add(particleControl, 'rotate').onChange(particleControl.redraw).listen();
+    gui.add(camera.position, 'x', -100, 100).onChange().listen();
+    gui.add(camera.position, 'y', -100, 100).onChange().listen();
+    gui.add(camera.position, 'z', -100, 100).onChange().listen();
+
+    gui.remember(particleStates.default)
     gui.close();
     
+    // Renderer
     renderer = new THREE.WebGLRenderer( { antialias: false, alpha: true } );
     renderer.setSize( window.innerWidth, window.innerHeight );
 
-    document.getElementById('___gatsby').appendChild( renderer.domElement );
+    container.appendChild( renderer.domElement );
     
+    // Event
     window.addEventListener('resize', onWindowResize, false);
+    window.addEventListener('mousemove', onMouseMove, false);
 }
     
-export function animate(time) {
+export function animate() {
     
     requestAnimationFrame( animate );
     
@@ -131,9 +151,10 @@ export function animate(time) {
     renderer.render( scene, camera );
     // var delta = clock.getDelta();
     // composer.render(delta)
-	TWEEN.update(time);
+	TWEEN.update();
     if (particleControl.rotate) {
-        knot.rotation.y = step += 0.005;
+        knot.rotation.y = step += 0.004;
+        knot.rotation.z = step += 0.0001;
     }
 
 }
@@ -144,7 +165,25 @@ function onWindowResize() {
     renderer.setSize(_width, _height);
     camera.aspect = _width / _height;
     camera.updateProjectionMatrix();
+
+    adjustCamPos()
     console.log('- resize -');
+}
+
+function onMouseMove(e) {
+    const { x, y } = e
+    const base = getCamRWDPreset()
+    camera.position.z = base.z + x / 900
+    camera.position.y = base.y - y / 900
+}
+
+function adjustCamPos() {
+    cameraState.apply(getCamRWDPreset())
+}
+
+function getCamRWDPreset() {
+    const _width = window.innerWidth;
+    return (_width <= 768) ? cameraState.mobile : cameraState.default
 }
 
 function generateSprite() {
