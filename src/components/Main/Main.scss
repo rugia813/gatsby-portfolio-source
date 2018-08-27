@@ -36,3 +36,14 @@
         color: #d7ac2f;
     }
 }
+
+.grow { 
+    transition: transform .1s ease-in-out; 
+    transition-delay: .4s;
+    display: inline-block;
+    min-width: 2rem;
+}
+.grow:hover { 
+    transform: scale(1.1); 
+    transition-delay: 0s;
+}

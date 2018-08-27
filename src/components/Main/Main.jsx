@@ -8,6 +8,7 @@ import "./Main.scss";
 
 class Main extends Component {
   render() {
+    const name  = this.makeGrowText('Jay Li')
     return (
       <div className="index-container md-grid mobile-fix">
         <div className="md-grid md-cell--8">
@@ -19,7 +20,7 @@ class Main extends Component {
             /> */}
             
             <div className="intro">
-              <div className="intro-author">Jay Li</div>
+              <div className="intro-author">{ name }</div>
               <div className="intro-occupation">Web Developer</div>
             </div>
             
@@ -32,6 +33,9 @@ class Main extends Component {
         </div>
       </div>
     );
+  }
+  makeGrowText(str) {
+    return str.split('').map((e) => <span className="grow" key={e}>{e}</span>)
   }
 }
 
