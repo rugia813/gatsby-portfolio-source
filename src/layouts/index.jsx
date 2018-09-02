@@ -5,7 +5,7 @@ import Navigation from "../components/Navigation/Navigation";
 import config from "../../data/SiteConfig";
 import "./index.scss";
 import "./global.scss";
-import {init, animate} from "../components/Bg3d/Bg3d";
+import {init, animate, particleControl} from "../components/Bg3d/Bg3d";
 
 export default class MainLayout extends React.Component {
   getLocalTitle() {
@@ -16,7 +16,7 @@ export default class MainLayout extends React.Component {
     const currentPath = this.props.location.pathname
     .replace(pathPrefix, "")
     .replace(/[/]/g, "");
-    
+
     let title = "";
     if (currentPath === "") {
       title = "Home";
@@ -46,6 +46,21 @@ export default class MainLayout extends React.Component {
   componentDidMount() {
     init()
     animate()
+  }
+  componentDidUpdate() {
+    const pathPrefix = config.pathPrefix ? config.pathPrefix : "/";
+    const currentPath = this.props.location.pathname
+    .replace(pathPrefix, "")
+    .replace(/[/]/g, "");
+    const isHome = currentPath === ""
+
+    if (isHome) {
+      particleControl.transitToLogo(false)
+      // particleControl.move = true
+    } else {
+      particleControl.transitToLogo(true)
+      particleControl.move = false
+    }
   }
   render() {
     const { children } = this.props;

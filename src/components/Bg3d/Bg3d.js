@@ -14,6 +14,7 @@ let geometry, material, knot;
 let step = 0;
 let composer, effectFocus;
 var controls
+let isMobile = false
 let clock = new THREE.Clock();
 console.log('THREE: ', THREE);
 const container = document.getElementById('___gatsby')
@@ -47,6 +48,15 @@ const particleStates = {
         radialSegments: 200,
         radius: 1,
         heightScale: 1,
+    },
+    logo: {
+        radius: 14,
+        tube: 2,
+        radialSegments: 284,
+        tubularSegments: 1,
+        p: 5,
+        q: 6,
+        heightScale: 0.1,
     }
 }
 const cameraState = {
@@ -60,16 +70,23 @@ const cameraState = {
         y: 15,
         z: 0
     },
+    logo: {
+        y: -20,
+    },
     apply: function(preset) {
-        camera.position.x = preset.x
-        camera.position.y = preset.y
-        camera.position.z = preset.z
+        camera.position.x = preset.x || camera.position.x
+        camera.position.y = preset.y || camera.position.y
+        camera.position.z = preset.z || camera.position.z
     }
 }
+camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+cameraState.apply(cameraState.default)
+camera.lookAt(new THREE.Vector3(0, 0, 0));
+adjustCamPos()
 
 const gui = new dat.GUI();
 
-const particleControl = new function () {
+export const particleControl = new function () {
     this.radius = defaultState.radius;
     this.tube = defaultState.tube;
     this.radialSegments = defaultState.radialSegments;
@@ -78,6 +95,7 @@ const particleControl = new function () {
     this.q = defaultState.q;
     this.heightScale = defaultState.heightScale;
     this.rotate = true;
+    this.move = true;
 
     this.redraw = function () {
         // remove the old plane
@@ -90,14 +108,40 @@ const particleControl = new function () {
         // add it to the scene.
         scene.add(knot);
     };
+
+    this.transitToLogo = function(isToLogo) {
+        let cState, pState, speed
+
+        if (isToLogo) {
+            cState = cameraState.logo
+            pState = particleStates.logo
+            speed = 250
+        } else {
+            cState = cameraState.default
+            pState = particleStates.ballBig
+            speed = 400
+        }
+
+        new TWEEN.Tween(camera.position)
+            .to(cState, speed)
+            .easing(TWEEN.Easing.Quadratic.Out)
+            .onComplete(function() {
+                if (!isToLogo)
+                    particleControl.move = true
+            })
+            .start();
+
+        new TWEEN.Tween(this)
+            .to(pState, speed)
+            .easing(TWEEN.Easing.Quadratic.Out)
+            .onUpdate(function() {
+                particleControl.redraw();
+            })
+            .start();
+    }
 }
 
 export function init() {
-    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    cameraState.apply(cameraState.default)
-    camera.lookAt(new THREE.Vector3(0, 0, 0));
-    adjustCamPos()
-
     // controls = new OrbitControls( camera );
     // controls.enableZoom  = true
 
@@ -171,6 +215,7 @@ function onWindowResize() {
 }
 
 function onMouseMove(e) {
+    if (!particleControl.move) return
     const { x, y } = e
     const base = getCamRWDPreset()
     camera.position.z = base.z + x / 900
