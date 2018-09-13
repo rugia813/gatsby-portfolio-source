@@ -63,15 +63,18 @@ const cameraState = {
     default: {
         x: -70,
         y: 5,
-        z: 0
+        z: 1
     },
     mobile: {
         x: -100,
         y: 15,
-        z: 0
+        z: 1
     },
     logo: {
-        y: -20,
+        y: -21,
+    },
+    logoMobile: {
+        y: -24,
     },
     apply: function(preset) {
         camera.position.x = preset.x || camera.position.x
@@ -119,7 +122,7 @@ export const particleControl = new function () {
         } else {
             cState = cameraState.default
             pState = particleStates.ballBig
-            speed = 400
+            speed = 250
         }
 
         new TWEEN.Tween(camera.position)
@@ -152,7 +155,7 @@ export function init() {
     setTimeout(() => {
         new TWEEN.Tween(particleControl)
             // .to(particleStates.ballSmall, 3000)
-            .to(particleStates.ballBig, 3000)
+            .to(particleStates.ballBig, 2000)
             .easing(TWEEN.Easing.Quadratic.Out)
             .onUpdate(function() {
                 particleControl.redraw();
@@ -230,6 +233,13 @@ function getCamRWDPreset() {
     const _width = window.innerWidth;
     return (_width <= 768) ? cameraState.mobile : cameraState.default
 }
+
+
+
+
+
+
+
 
 function generateSprite() {
 
