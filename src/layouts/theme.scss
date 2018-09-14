@@ -1,6 +1,6 @@
 @import '~react-md/src/scss/react-md';
 
-$md-light-theme: false;
+$md-light-theme: true;
 $darkTransparent: rgba(0,0,0,0.3);
 $md-primary-color: $darkTransparent;
 $md-secondary-color: $md-green-700;
@@ -25,7 +25,7 @@ a:link {
 
 .md-card {
     z-index: 1;
-    background-color: $darkTransparent;
+    // background-color: $darkTransparent;
 }
 
 .dg {

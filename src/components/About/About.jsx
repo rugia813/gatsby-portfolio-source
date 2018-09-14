@@ -12,6 +12,7 @@ import {
 import UserLinks from "../UserLinks/UserLinks";
 import config from "../../../data/SiteConfig";
 import "./About.scss";
+import Skills from './Skills'
 
 class About extends Component {
   render() {
@@ -43,7 +44,7 @@ class About extends Component {
     ))
     return (
       <div className="index-container md-grid mobile-fix">
-        <Card className="md-grid md-cell--8">
+        <Card className="md-grid md-cell--10">
           <div className="about-wrapper">
             <CardTitle title="Jay Li" subtitle={titles.introduction} />
             <CardText className="md-cell--12">
@@ -51,7 +52,7 @@ class About extends Component {
                 The <code>CardText</code> component is really just useful for displaying any
                 content with some additional padding.
               </p>
-              <hr/>
+              {/* <hr/>
               <CardTitle title={titles.experiances} />
               {expList}
 
@@ -59,12 +60,10 @@ class About extends Component {
               {educationList}
 
               <br/>
-              <hr/>
+              <hr/> */}
               <CardTitle title={titles.skills} />
               <CardText>
-                <p>
-                  Responsible for maintaining current projects, and develop new functionalities.
-                </p>
+                <Skills data={data}></Skills>
               </CardText>
 
             </CardText>

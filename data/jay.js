@@ -62,51 +62,5 @@ module.exports = {
                 title: '應用英語系',
             }
         ]
-    },
-    skills: { //novice, competent, proficient, expert, mastery
-        Frontend: {
-            HTML: 3,
-            CSS: {
-                _level: 2,
-                Bootstrap: 3,
-                Sass: 2,
-            },
-            Javascript: {
-                _level: 4,
-                ES6: 4,
-                Typescript: 1,
-                React: 2,
-                Vue: 4,
-                npm: 3,
-                webpack: 2,
-                gulp: 2,
-                threejs: 2,
-            },
-        },
-        Backend: {
-            PHP: {
-                _level: 2,
-                Laravel: 3,
-                mysql: 3,
-            },
-            'C#': {
-                _level: 2,
-                '.Net': 2,
-                mssql: 2,
-            },
-            nginx: 2,
-            linux: {
-                _level: 2,
-                centos: 2
-            },
-            nodejs: {
-                _level: 2,
-                socketio: 1
-            },
-        },
-        others: {
-            git: 3,
-            regex: 3,
-        },
     }
 }

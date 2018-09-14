@@ -122,7 +122,7 @@ export const particleControl = new function () {
         } else {
             cState = cameraState.default
             pState = particleStates.ballBig
-            speed = 250
+            speed = 150
         }
 
         new TWEEN.Tween(camera.position)

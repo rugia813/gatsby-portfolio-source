@@ -16,6 +16,8 @@ class AboutPageEn extends Component {
         <Helmet>
           <title>{`About | ${config.siteTitle}`}</title>
           <link rel="canonical" href={`${config.siteUrl}/about/`} />
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css"/>
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css"/>
         </Helmet>
         <About data={data} />
       </div>
