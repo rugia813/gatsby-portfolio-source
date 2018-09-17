@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Avatar } from 'react-md';
 import "./Skills.scss";
 
 class Skills extends Component {
@@ -94,7 +95,15 @@ class Skills extends Component {
             return (
                 <div>
                     <div className={"skill-tile "  + this.levels[node._level]}>
-                        {i !== '' && <i className={`fab fa-${(this.fa[i] || 'empire').toLowerCase()}`} style={{ color: "black" }} />}
+                        {
+                          i !== '' && (
+                            this.fa[i] ? 
+                            <i className={`fab fa-${(this.fa[i]).toLowerCase()}`} style={{ color: "black" }} /> :
+                            <Avatar className="avatar">
+                              {i}
+                            </Avatar>
+                          )
+                        }
                         <p className="skill-level">{i}</p>
                     </div>
                     {Object.entries(node).map((e, i) => build(e[1], e[0]))}
@@ -104,7 +113,12 @@ class Skills extends Component {
             if (i == '_level') return ('')
             return (
                 <div className={"skill-tile "  + this.levels[node]}>
-                <i className={`fab fa-${(this.fa[i] || 'empire').toLowerCase()}`} style={{ color: "black" }} />
+                  { this.fa[i] ? 
+                    <i className={`fab fa-${(this.fa[i]).toLowerCase()}`} style={{ color: "black" }} /> :
+                    <Avatar className="avatar">
+                      {(i.length > 4 ? i[0] : i).toUpperCase()}
+                    </Avatar>
+                  }
                   <p className="skill-level">{i}</p>
                 </div>
             )        
@@ -113,8 +127,8 @@ class Skills extends Component {
     const tree = Object.entries(this.skills).map((e, i) => 
         <div className="category">
             <h2>{e[0]}</h2>
-            <hr/>
             {build(e[1], '')}
+            <hr/>
         </div>
     )
     return <div>{tree}</div>;

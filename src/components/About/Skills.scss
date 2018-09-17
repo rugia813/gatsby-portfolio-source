@@ -1,6 +1,12 @@
   .category {
       width: 100%;
-      border: solid 1px;
+      // border: solid 1px;
+
+      h2 {
+        text-align: center;
+        margin: auto;
+        font-family: fantasy;
+      }
   }
   .skill-tile {
     display: inline-block;
@@ -12,15 +18,23 @@
     // background-image: radial-gradient(#424242 0%, #141414 80%);
     // background-position: -5px -10px;
     border: none!important;
+    &>* {
+      font-family: monospace;
+    }
     
     .fab {
       font-size: 51px;
     }
     .skill-level {
-        display: grid;
+      display: grid;
       margin: 0;
       font-size: 14px;
+      font-weight: bold;
       color: black;
+      &::after {
+        font-size: 12px;
+        font-weight: normal;
+      }
     }
     &.mastery {
       border-image: radial-gradient(orange 50%, brown 90%) 1 1%;

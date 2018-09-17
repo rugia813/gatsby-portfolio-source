@@ -49,8 +49,18 @@ class About extends Component {
             <CardTitle title="Jay Li" subtitle={titles.introduction} />
             <CardText className="md-cell--12">
               <p>
-                The <code>CardText</code> component is really just useful for displaying any
-                content with some additional padding.
+                Hi, my name is Jay, I am a web developer who is focusing on vue.js and laravel.<br/>
+                <br/>
+                                My current job is javascript developer at a web game developer company, my main job is to maintain or develop new functionalities for the front-end of a lottery web app. The stack is vue.js and some jquery for older projects.<br/>
+                <br/>
+                                My previous job is full-stack developer at a gaming platform company, where I have taken parts in two projects, one is a simple web game, and the other is a platform that provides various reports based on data retrieved through other business partner's API. Both projects were build with laravel & jquery.<br/>
+                <br/>
+                                I majored in Applied English in University, and scored 935 in Toeic.<br/>
+                                I learned how to programming mostly from various online resources, and I did also finished a six-month training program at III(Institute for information industry).<br/>
+                <br/>
+                                I am keen on learning new technologies, and I take my code seriously, I always try my best to ensure its readability, scalability and non-repetitivity.<br/>
+                                If you have a job that might be suitable for me, please feel free to contact me.<br/>
+                                Thanks.
               </p>
               {/* <hr/>
               <CardTitle title={titles.experiances} />
@@ -61,7 +71,7 @@ class About extends Component {
 
               <br/>
               <hr/> */}
-              <CardTitle title={titles.skills} />
+              {/* <CardTitle title={titles.skills} /> */}
               <CardText>
                 <Skills data={data}></Skills>
               </CardText>
