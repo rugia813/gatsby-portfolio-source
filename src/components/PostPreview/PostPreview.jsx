@@ -42,7 +42,7 @@ class PostPreview extends Component {
     const cover = postInfo.cover.startsWith("/")
       ? __PATH_PREFIX__ + postInfo.cover
       : postInfo.cover;
-    const coverHeight = mobile ? 162 : 225;
+    const coverHeight = mobile ? 217 : 372;
     return (
       <Card key={postInfo.path} raise className="md-grid md-cell md-cell--12">
         <Link style={{ textDecoration: "none" }} to={postInfo.path}>
@@ -66,7 +66,7 @@ class PostPreview extends Component {
           expander={expand}
           avatar={<Avatar icon={<FontIcon iconClassName="fa fa-calendar" />} />}
           title={`Published on ${postInfo.date}`}
-          subtitle={`${postInfo.timeToRead} min read`}
+          // subtitle={`${postInfo.timeToRead} min read`}
         />
 
         <CardText expandable={expand}>
