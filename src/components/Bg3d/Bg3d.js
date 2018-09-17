@@ -5,7 +5,7 @@ import { BloomPass, FilmPass, GlitchPass } from "postprocessing";
 import { FocusShader, DotScreenShader, RGBShiftShader, OrbitControls } from 'three-addons';
 import { Stats } from 'three-stats';
 import TWEEN from "@tweenjs/tween.js";
-import * as dat from 'dat.gui';
+// import * as dat from 'dat.gui';
 
 let camera, scene, renderer, mesh, renderTarget;
 
@@ -17,7 +17,8 @@ var controls
 let isMobile = false
 let clock = new THREE.Clock();
 console.log('THREE: ', THREE);
-const container = document.getElementById('___gatsby')
+const _window = (typeof window !== 'undefined') ? window : {}
+// const container = document.getElementById('___gatsby')
 
 let stats;
 // init();
@@ -82,12 +83,12 @@ const cameraState = {
         camera.position.z = preset.z || camera.position.z
     }
 }
-camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera = new THREE.PerspectiveCamera(45, _window.innerWidth / _window.innerHeight, 0.1, 1000);
 cameraState.apply(cameraState.default)
 camera.lookAt(new THREE.Vector3(0, 0, 0));
 adjustCamPos()
 
-const gui = new dat.GUI();
+// const gui = new dat.GUI();
 
 export const particleControl = new function () {
     this.radius = defaultState.radius;
@@ -164,30 +165,30 @@ export function init() {
     }, 1500);
 
     // DAT GUI
-    gui.add(particleControl, 'radius', 0, 40).onChange(particleControl.redraw).listen();
-    gui.add(particleControl, 'tube', 0, 40).onChange(particleControl.redraw).listen();
-    gui.add(particleControl, 'radialSegments', 0, 600).step(1).onChange(particleControl.redraw).listen();
-    gui.add(particleControl, 'tubularSegments', 1, 20).step(1).onChange(particleControl.redraw).listen();
-    gui.add(particleControl, 'p', 1, 10).step(1).onChange(particleControl.redraw).listen();
-    gui.add(particleControl, 'q', 1, 15).step(1).onChange(particleControl.redraw).listen();
-    gui.add(particleControl, 'heightScale', 0, 5).onChange(particleControl.redraw).listen();
-    gui.add(particleControl, 'rotate').onChange(particleControl.redraw).listen();
-    gui.add(camera.position, 'x', -100, 100).onChange().listen();
-    gui.add(camera.position, 'y', -100, 100).onChange().listen();
-    gui.add(camera.position, 'z', -100, 100).onChange().listen();
+    // gui.add(particleControl, 'radius', 0, 40).onChange(particleControl.redraw).listen();
+    // gui.add(particleControl, 'tube', 0, 40).onChange(particleControl.redraw).listen();
+    // gui.add(particleControl, 'radialSegments', 0, 600).step(1).onChange(particleControl.redraw).listen();
+    // gui.add(particleControl, 'tubularSegments', 1, 20).step(1).onChange(particleControl.redraw).listen();
+    // gui.add(particleControl, 'p', 1, 10).step(1).onChange(particleControl.redraw).listen();
+    // gui.add(particleControl, 'q', 1, 15).step(1).onChange(particleControl.redraw).listen();
+    // gui.add(particleControl, 'heightScale', 0, 5).onChange(particleControl.redraw).listen();
+    // gui.add(particleControl, 'rotate').onChange(particleControl.redraw).listen();
+    // gui.add(camera.position, 'x', -100, 100).onChange().listen();
+    // gui.add(camera.position, 'y', -100, 100).onChange().listen();
+    // gui.add(camera.position, 'z', -100, 100).onChange().listen();
 
-    gui.remember(particleStates.default)
-    gui.close();
+    // gui.remember(particleStates.default)
+    // gui.close();
     
     // Renderer
     renderer = new THREE.WebGLRenderer( { antialias: false, alpha: true } );
-    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setSize( _window.innerWidth, _window.innerHeight );
 
-    container.appendChild( renderer.domElement );
+    document.getElementById('___gatsby').appendChild( renderer.domElement );
     
     // Event
-    window.addEventListener('resize', onWindowResize, false);
-    window.addEventListener('mousemove', onMouseMove, false);
+    _window.addEventListener('resize', on_WindowResize, false);
+    _window.addEventListener('mousemove', onMouseMove, false);
 }
     
 export function animate() {
@@ -206,9 +207,9 @@ export function animate() {
 
 }
 
-function onWindowResize() {
-    const _width = window.innerWidth;
-    const _height = window.innerHeight;
+function on_WindowResize() {
+    const _width = _window.innerWidth;
+    const _height = _window.innerHeight;
     renderer.setSize(_width, _height);
     camera.aspect = _width / _height;
     camera.updateProjectionMatrix();
@@ -230,7 +231,7 @@ function adjustCamPos() {
 }
 
 function getCamRWDPreset() {
-    const _width = window.innerWidth;
+    const _width = _window.innerWidth;
     return (_width <= 768) ? cameraState.mobile : cameraState.default
 }
 
