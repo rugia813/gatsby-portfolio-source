@@ -49,6 +49,8 @@ class PostPreview extends Component {
           <Media
             style={{
               backgroundImage: `url(${cover})`,
+              backgroundSize: 'cover',
+              backgroundPositionY: 'top',
               height: `${coverHeight}px`
             }}
             className="post-preview-cover"

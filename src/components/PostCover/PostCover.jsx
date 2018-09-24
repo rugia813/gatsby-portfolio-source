@@ -12,7 +12,11 @@ class PostCover extends Component {
     const coverHeight = mobile ? 180 : 350;
     return (
       <div
-        style={{ backgroundImage: `url(${cover})`, height: `${coverHeight}px` }}
+        style={{ 
+          backgroundImage: `url(${cover})`, 
+          height: `${coverHeight}px`,
+          backgroundPositionY: 'top',
+        }}
         className="md-grid md-cell--9 post-cover"
       />
     );
