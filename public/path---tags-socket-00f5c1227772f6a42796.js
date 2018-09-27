@@ -1,0 +1,2 @@
+webpackJsonp([0xd3291156b3be],{689:function(e,t){e.exports={data:{allMarkdownRemark:{totalCount:1,edges:[{node:{fields:{slug:"/simple-online-multi-player-painter"},excerpt:"A small application for practicing html canvas and websocket.  It syncs up what everyone's drawing, but I haven't make the server to store…",timeToRead:1,frontmatter:{title:"Simple Online Multi-Player Painter",tags:["canvas","socket"],cover:"/imgs/painter.JPG",date:"04/06/2018"}}}]}},pathContext:{tag:"socket"}}}});
+//# sourceMappingURL=path---tags-socket-00f5c1227772f6a42796.js.map
