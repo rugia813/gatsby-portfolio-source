@@ -7,15 +7,10 @@ tags:
     - canvas
     - socket
 ---
-# 3d Mobile Case Customization Demo
+![alt text](/imgs/painter.JPG "phone")
 
-## subtitle
+A small application for practicing html canvas and websocket. 
 
-Lorem markdownum nunc fuerat vulgaris ipse. Profecisse Atridae flumen perit
-huic, non bis, summa retemptat. Praedelassat tollitur parte capiebant lustratum
-hominem loco coniuge quota, nec aura. Cum constiterat, animos sic videre dumque
-altus **de vesper** membra blanditiis aethera orgia.
+It syncs up what everyone's drawing, but I haven't make the server to store the current state, so the new comer will always see blank for now.
 
-1. Sicyonius color
-2. Publica animalia suoque sub
-3. Stupet eiusdem paventem meum
+Link: https://socketiotest-rugia.herokuapp.com/

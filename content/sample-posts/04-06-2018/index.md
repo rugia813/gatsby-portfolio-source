@@ -6,15 +6,10 @@ category: "demo"
 tags:
     - three.js
 ---
-# 3d Mobile Case Customization Demo
+![alt text](/imgs/phone.JPG "phone")
 
-## subtitle
+This is a tech demo of a customizable 3D product model application.
 
-Lorem markdownum nunc fuerat vulgaris ipse. Profecisse Atridae flumen perit
-huic, non bis, summa retemptat. Praedelassat tollitur parte capiebant lustratum
-hominem loco coniuge quota, nec aura. Cum constiterat, animos sic videre dumque
-altus **de vesper** membra blanditiis aethera orgia.
+Tech: three.js
 
-1. Sicyonius color
-2. Publica animalia suoque sub
-3. Stupet eiusdem paventem meum
+Link: https://mobile-case-preview.netlify.com/
