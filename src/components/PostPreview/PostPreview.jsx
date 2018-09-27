@@ -43,27 +43,51 @@ class PostPreview extends Component {
       ? __PATH_PREFIX__ + postInfo.cover
       : postInfo.cover;
     const coverHeight = mobile ? 217 : 372;
+    const codepenEmbed = (title, hash) => {
+      return (
+        <p 
+          data-height="600" 
+          data-theme-id="dark" 
+          data-slug-hash={hash} 
+          data-default-tab="result" 
+          data-user="rugia" 
+          data-pen-title={title}
+          data-preview="true" 
+          className="codepen"
+        >
+          See the Pen <a href={`https://codepen.io/rugia/pen/${hash}/"`}>{title}</a> by Jay (<a href="https://codepen.io/rugia">@rugia</a>) on <a href="https://codepen.io">CodePen</a>.
+        </p>
+      )
+    }
     return (
       <Card key={postInfo.path} raise className="md-grid md-cell md-cell--12">
-        <Link style={{ textDecoration: "none" }} to={postInfo.path}>
-          <Media
-            style={{
-              backgroundImage: `url(${cover})`,
-              backgroundSize: 'cover',
-              backgroundPositionY: 'top',
-              height: `${coverHeight}px`
-            }}
-            className="post-preview-cover"
-          >
-            <MediaOverlay>
-              <CardTitle title={postInfo.title}>
-                <Button raised secondary className="md-cell--right">
-                  Read
-                </Button>
-              </CardTitle>
-            </MediaOverlay>
-          </Media>
-        </Link>
+      
+        {
+          postInfo.hash && codepenEmbed(postInfo.title, postInfo.hash)
+        }
+        {
+          !postInfo.hash && 
+          <Link style={{ textDecoration: "none" }} to={postInfo.path}>
+            <Media
+              style={{
+                backgroundImage: `url(${cover})`,
+                backgroundSize: 'cover',
+                backgroundPositionY: 'top',
+                height: `${coverHeight}px`
+              }}
+              className="post-preview-cover"
+            >
+              <MediaOverlay>
+                <CardTitle title={postInfo.title}>
+                  <Button raised secondary className="md-cell--right">
+                    Read
+                  </Button>
+                </CardTitle>
+              </MediaOverlay>
+            </Media>
+          </Link>
+        }
+        
         <CardTitle
           expander={expand}
           avatar={<Avatar icon={<FontIcon iconClassName="fa fa-calendar" />} />}

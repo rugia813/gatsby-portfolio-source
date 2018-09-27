@@ -16,6 +16,28 @@ class PostListing extends React.Component {
         timeToRead: postEdge.node.timeToRead
       });
     });
+    const pens = [
+      {
+        // tags: ['three.js'],
+        title: 'fireball with three.js',
+        hash: 'EbrdKj',
+        date: '03/02/2018',
+        excerpt: '',
+      },
+      {
+        // tags: ['react.js'],
+        title: 'Bingo Game with React',
+        hash: 'dRLqja',
+        date: '15/08/2017',
+        excerpt: 'practice react.js',
+      }
+    ].forEach((e) => {
+      postList.push({
+        ...e,
+        cover: '',
+        tags: ''
+      })
+    })
     return postList;
   }
   componentDidMount() {
@@ -24,30 +46,14 @@ class PostListing extends React.Component {
   }
   render() {
     const postList = this.getPostList();
-    const codepenEmbed = (title, hash) => {
-      return (
-        <p 
-          data-height="600" 
-          data-theme-id="dark" 
-          data-slug-hash={hash} 
-          data-default-tab="result" 
-          data-user="rugia" 
-          data-pen-title={title}
-          data-preview="true" 
-          className="codepen"
-        >
-          See the Pen <a href={`https://codepen.io/rugia/pen/${hash}/"`}>{title}</a> by Jay (<a href="https://codepen.io/rugia">@rugia</a>) on <a href="https://codepen.io">CodePen</a>.
-        </p>
-      )
-    }
     return (
       <div className="md-grid md-grid--no-spacing md-cell--middle">
         <div className="md-grid md-cell--8 mobile-fix">
           {postList.map(post => (
             <PostPreview key={post.title} postInfo={post} />
           ))}
-          {codepenEmbed('fireball with three.js', 'EbrdKj')}
-          {codepenEmbed('Bingo Game with React', 'dRLqja')}
+          {/* {codepenEmbed('fireball with three.js', 'EbrdKj')}
+          {codepenEmbed('Bingo Game with React', 'dRLqja')} */}
         </div>
       </div>
     );

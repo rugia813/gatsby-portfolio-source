@@ -4,8 +4,7 @@ cover: "/imgs/innovision.JPG"
 date: "04/06/2018"
 category: "demo"
 tags:
-    - canvas
-    - socket
+    - vue.js
 ---
 ---
 ![alt text](/imgs/innovision.JPG "phone")
