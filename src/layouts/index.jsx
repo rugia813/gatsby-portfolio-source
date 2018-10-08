@@ -55,11 +55,11 @@ export default class MainLayout extends React.Component {
     const isHome = currentPath === ""
 
     if (isHome) {
-      particleControl.transitToLogo(false)
+      particleControl.transitToInit(false)
       // particleControl.move = true
     } else {
-      particleControl.transitToLogo(true)
-      particleControl.move = false
+      particleControl.transitToInit(true)
+      // particleControl.move = false
     }
   }
   render() {
