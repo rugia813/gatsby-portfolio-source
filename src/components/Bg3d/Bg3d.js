@@ -143,6 +143,26 @@ export const particleControl = new function () {
             })
             .start();
     }
+
+    this.transitToInit = function(isToInit) {
+        let pState, speed
+
+        if (isToInit) {
+            pState = particleStates.default
+            speed = 500
+        } else {
+            pState = particleStates.ballBig
+            speed = 2000
+        }
+
+        new TWEEN.Tween(this)
+            .to(pState, speed)
+            .easing(TWEEN.Easing.Quadratic.Out)
+            .onUpdate(function() {
+                particleControl.redraw();
+            })
+            .start();
+    }
 }
 
 export function init() {
@@ -154,15 +174,16 @@ export function init() {
     particleControl.redraw();
 
     setTimeout(() => {
-        new TWEEN.Tween(particleControl)
-            // .to(particleStates.ballSmall, 3000)
-            .to(particleStates.ballBig, 2000)
-            .easing(TWEEN.Easing.Quadratic.Out)
-            .onUpdate(function() {
-                particleControl.redraw();
-            })
-            .start();
-    }, 1500);
+        // new TWEEN.Tween(particleControl)
+        //     // .to(particleStates.ballSmall, 3000)
+        //     .to(particleStates.ballBig, 2000)
+        //     .easing(TWEEN.Easing.Quadratic.Out)
+        //     .onUpdate(function() {
+        //         particleControl.redraw();
+        //     })
+        //     .start();
+        particleControl.transitToInit(false)
+    }, 100);
 
     // DAT GUI
     // gui.add(particleControl, 'radius', 0, 40).onChange(particleControl.redraw).listen();
